@@ -14,6 +14,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(calendar-week-start-day 1)
+ '(org-export-backends (quote (ascii html icalendar latex md odt)))
  '(package-selected-packages (quote (evil-numbers evil-org evil evil-tutor ## org))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
