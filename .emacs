@@ -39,5 +39,6 @@
 (require 'evil-org)
 (add-hook 'org-mode-hook 'evil-org-mode)
 (evil-org-set-key-theme '(navigation insert textobjects additional))
+(require 'org-checklist)
 
 (menu-bar-mode -1)
