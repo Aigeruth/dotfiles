@@ -39,6 +39,9 @@
 (global-set-key "\C-cb" 'org-switchb)
 (setq org-startup-indented t
       org-hide-leading-stars t)
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)")
+        (sequence "|" "CANCELED(c)")))
 (require 'evil-org)
 (add-hook 'org-mode-hook 'evil-org-mode)
 (evil-org-set-key-theme '(navigation insert textobjects additional))
