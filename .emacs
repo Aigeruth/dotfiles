@@ -15,7 +15,9 @@
  ;; If there is more than one, they won't work right.
  '(calendar-week-start-day 1)
  '(org-export-backends (quote (ascii html icalendar latex md odt)))
- '(package-selected-packages (quote (evil-numbers evil-org evil evil-tutor ## org))))
+ '(package-selected-packages
+   (quote
+    (org-journal org-plus-contrib evil-numbers evil-org evil evil-tutor ## org))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -41,5 +43,6 @@
 (add-hook 'org-mode-hook 'evil-org-mode)
 (evil-org-set-key-theme '(navigation insert textobjects additional))
 (require 'org-checklist)
+(require 'org-journal)
 
 (menu-bar-mode -1)
