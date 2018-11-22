@@ -61,3 +61,4 @@
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 (menu-bar-mode -1)
+(toggle-scroll-bar -1)
