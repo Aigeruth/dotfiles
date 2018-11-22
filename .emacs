@@ -56,4 +56,8 @@
 (require 'org-checklist)
 (require 'org-journal)
 
+;; Works in Carbon Emacs
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
 (menu-bar-mode -1)
