@@ -30,6 +30,7 @@
  )
 
 ;; Emacs configuration
+(setq backup-directory-alist `(("." . "~/.emacs_backups")))
 (load-theme 'dracula t)
 
 ; Evil mode configuration
