@@ -16,6 +16,13 @@
 (eval-when-compile
   (require 'use-package))
 
+(use-package auto-package-update
+  :ensure t
+  :init
+  (setq auto-package-update-prompt-before-update t)
+  (auto-package-update-maybe)
+)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -29,7 +36,7 @@
  '(org-export-backends (quote (ascii html icalendar latex md odt)))
  '(package-selected-packages
    (quote
-    (use-package magit dracula-theme helm org-bullets org-journal org-plus-contrib evil-numbers evil-org evil evil-tutor ## org))))
+    (auto-package-update use-package magit dracula-theme helm org-bullets org-journal org-plus-contrib evil-numbers evil-org evil evil-tutor ## org))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
