@@ -23,6 +23,12 @@
   (auto-package-update-maybe)
 )
 
+(use-package org-bullets
+  :ensure t
+  :init
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -36,7 +42,7 @@
  '(org-export-backends (quote (ascii html icalendar latex md odt)))
  '(package-selected-packages
    (quote
-    (auto-package-update use-package magit dracula-theme helm org-bullets org-journal org-plus-contrib evil-numbers evil-org evil evil-tutor ## org))))
+    (auto-package-update use-package magit dracula-theme helm org-journal org-plus-contrib evil-numbers evil-org evil evil-tutor ## org))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -71,9 +77,6 @@
 (require 'org-checklist)
 (require 'org-journal)
 
-;; Works in Carbon Emacs
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
