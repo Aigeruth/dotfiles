@@ -42,7 +42,7 @@
  '(org-export-backends (quote (ascii html icalendar latex md odt)))
  '(package-selected-packages
    (quote
-    (auto-package-update use-package magit dracula-theme helm org-journal org-plus-contrib evil-numbers evil-org evil evil-tutor ## org))))
+    (evil-ledger ledger-mode magit dracula-theme helm org-journal org-plus-contrib evil-numbers evil-org evil evil-tutor ## org))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
