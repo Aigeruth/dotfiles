@@ -29,6 +29,10 @@
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 )
 
+(use-package rg
+  :ensure t
+)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
