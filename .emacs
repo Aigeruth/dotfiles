@@ -78,7 +78,13 @@
 
 ;; Emacs configuration
 (setq backup-directory-alist `(("." . "~/.emacs_backups")))
+
+;; Appearance
 (load-theme 'dracula t)
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(add-to-list 'default-frame-alist '(ns-appearance . light))
+(menu-bar-mode -1)
+(toggle-scroll-bar -1)
 
 ; Evil mode configuration
 ; Enable table
@@ -92,5 +98,3 @@
 (require 'org-checklist)
 (require 'org-habit)
 
-(menu-bar-mode -1)
-(toggle-scroll-bar -1)
