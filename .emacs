@@ -23,10 +23,32 @@
   (auto-package-update-maybe)
 )
 
+(use-package org
+  :ensure t
+  :pin org
+  :bind (
+    ("\C-cl" . org-store-link)
+    ("\C-ca" . org-agenda)
+    ("\C-cc" . org-capture)
+    ("\C-cb" . org-switchb)
+  )
+  :config
+  (setq org-agenda-files (directory-files-recursively "~/org/" "\.org$"))
+  (setq org-startup-indented t
+        org-hide-leading-stars t)
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)")
+          (sequence "|" "CANCELED(c)")))
+  (setq org-log-done 'time)
+)
+; OrgMode configuration
+;; Hide leading stars
 (use-package org-bullets
   :ensure t
-  :init
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+  :hook (org-mode . org-bullets-mode)
+)
+(use-package org-journal
+  :ensure t
 )
 
 (use-package rg
@@ -46,7 +68,7 @@
  '(org-export-backends (quote (ascii html icalendar latex md odt)))
  '(package-selected-packages
    (quote
-    (evil-ledger ledger-mode magit dracula-theme helm org-journal org-plus-contrib evil-numbers evil-org evil evil-tutor ## org))))
+    (evil-ledger ledger-mode magit dracula-theme helm org-plus-contrib evil-numbers evil-org evil evil-tutor))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -64,23 +86,11 @@
 (require 'evil)
 (evil-mode 1)
 
-; OrgMode configuration
-;; Hide leading stars
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cc" 'org-capture)
-(global-set-key "\C-cb" 'org-switchb)
-(setq org-startup-indented t
-      org-hide-leading-stars t)
-(setq org-todo-keywords
-      '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)")
-        (sequence "|" "CANCELED(c)")))
 (require 'evil-org)
 (add-hook 'org-mode-hook 'evil-org-mode)
 (evil-org-set-key-theme '(navigation insert textobjects additional))
 (require 'org-checklist)
-(require 'org-journal)
-
+(require 'org-habit)
 
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
