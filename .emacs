@@ -129,6 +129,18 @@
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
 
+;; Spelling
+(when (executable-find "hunspell")
+  (setq-default ispell-program-name "hunspell")
+  (setq ispell-local-dictionary "en_GB")
+  (setq ispell-local-dictionary-alist
+	  ;; Please note the list `("-d" "en_US")` contains ACTUAL parameters passed to hunspell
+	  ;; You could use `("-d" "en_US,en_US-med")` to check with multiple dictionaries
+	  '(("en_GB" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_GB") nil utf-8)
+	    ))
+)
+
+
 ; Evil mode configuration
 ; Enable table
 (setq evil-want-C-i-jump nil)
