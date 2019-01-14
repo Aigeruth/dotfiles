@@ -53,6 +53,15 @@
   (text-mode . visual-line-mode)
 )
 ; OrgMode configuration
+(use-package org-plus-contrib
+  :no-require t
+  :pin org
+)
+(setq org-habit-show-habits-only-for-today nil)
+(require 'org-habit)
+(add-to-list 'org-modules 'org-habit)
+(require 'org-checklist)
+
 ;; Hide leading stars
 (use-package org-bullets
   :ensure t
@@ -103,7 +112,7 @@
  '(org-agenda-files (quote ("~/org/")))
  '(package-selected-packages
    (quote
-    (evil-ledger ledger-mode magit dracula-theme helm org-plus-contrib evil-numbers evil-org evil evil-tutor))))
+    (evil-ledger ledger-mode magit dracula-theme helm evil-numbers evil-org evil evil-tutor))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -130,6 +139,3 @@
 (require 'evil-org)
 (add-hook 'org-mode-hook 'evil-org-mode)
 (evil-org-set-key-theme '(navigation insert textobjects additional))
-(require 'org-checklist)
-(require 'org-habit)
-
