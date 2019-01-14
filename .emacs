@@ -48,6 +48,8 @@
         '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)")
           (sequence "|" "CANCELED(c)")))
   (setq org-log-done 'time)
+  :hook
+  (text-mode . visual-line-mode)
 )
 ; OrgMode configuration
 ;; Hide leading stars
