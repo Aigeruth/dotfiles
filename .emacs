@@ -23,6 +23,14 @@
   (auto-package-update-maybe)
 )
 
+(setenv "PATH" (concat
+  (getenv "PATH")
+  ":" (substitute-in-file-name "$HOME/bin")
+  ":/usr/local/bin")
+)
+(setq exec-path (append exec-path '((substitute-in-file-name "$HOME/bin"))))
+(setq exec-path (append exec-path '("/usr/local/bin")))
+
 (use-package org
   :ensure t
   :pin org
