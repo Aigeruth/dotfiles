@@ -109,7 +109,6 @@
  '(custom-safe-themes
    (quote
     ("aaffceb9b0f539b6ad6becb8e96a04f2140c8faa1de8039a343a4f1e009174fb" default)))
- '(org-agenda-files (quote ("~/org/")))
  '(package-selected-packages
    (quote
     (evil-ledger ledger-mode magit dracula-theme helm evil-numbers evil-org evil evil-tutor))))
