@@ -42,6 +42,7 @@
   )
   :config
   (setq org-agenda-files (directory-files-recursively "~/org/" "\.org$"))
+  '(org-export-backends (quote (ascii html md)))
   (setq org-startup-indented t
         org-hide-leading-stars t)
   (setq org-todo-keywords
@@ -100,7 +101,6 @@
    (quote
     ("aaffceb9b0f539b6ad6becb8e96a04f2140c8faa1de8039a343a4f1e009174fb" default)))
  '(org-agenda-files (quote ("~/org/")))
- '(org-export-backends (quote (ascii html icalendar latex md odt)))
  '(package-selected-packages
    (quote
     (evil-ledger ledger-mode magit dracula-theme helm org-plus-contrib evil-numbers evil-org evil evil-tutor))))
