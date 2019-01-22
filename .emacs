@@ -101,6 +101,23 @@
   :ensure t
 )
 
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
+(use-package ledger-mode
+  :pin melpa
+  :ensure t
+  :config
+  (setq ledger-default-date-format ledger-iso-date-format)
+)
+(use-package flycheck-ledger
+  :pin melpa
+  :defer t
+  :after ledger-mode)
+(use-package evil-ledger
+  :after ledger-mode)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -112,7 +129,7 @@
     ("aaffceb9b0f539b6ad6becb8e96a04f2140c8faa1de8039a343a4f1e009174fb" default)))
  '(package-selected-packages
    (quote
-    (evil-ledger ledger-mode magit dracula-theme helm evil-numbers evil-org evil evil-tutor))))
+    (magit dracula-theme helm evil-numbers evil-org evil evil-tutor))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
