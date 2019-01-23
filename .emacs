@@ -14,10 +14,10 @@
   (package-install 'use-package))
 
 (eval-when-compile
-  (require 'use-package))
+  (require 'use-package)
+  (setq use-package-always-ensure t))
 
 (use-package auto-package-update
-  :ensure t
   :init
   (setq auto-package-update-prompt-before-update t)
   (setq auto-package-update-delete-old-versions t)
@@ -33,7 +33,6 @@
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
 (use-package org
-  :ensure t
   :pin org
   :bind (
     ("\C-cl" . org-store-link)
@@ -65,11 +64,9 @@
 
 ;; Hide leading stars
 (use-package org-bullets
-  :ensure t
   :hook (org-mode . org-bullets-mode)
 )
 (use-package org-journal
-  :ensure t
   :config
   (defun org-journal-find-location ()
     ;; Open today's journal, but specify a non-nil prefix argument in order to
@@ -97,38 +94,29 @@
   )
 )
 
-(use-package rg
-  :ensure t
-)
+(use-package rg)
 
 (use-package flycheck
-  :ensure t
   :init (global-flycheck-mode))
 
 (use-package ledger-mode
   :pin melpa
   :mode "\\.ledger\\'"
-  :ensure t
   :config
   (setq ledger-default-date-format ledger-iso-date-format)
 )
 (use-package flycheck-ledger
   :pin melpa
-  :ensure t
   :after ledger-mode)
 (use-package evil-ledger
-  :ensure t
   :after ledger-mode)
 
 (use-package plantuml-mode
-  :mode "\\.plantuml\\'"
-  :ensure t)
+  :mode "\\.plantuml\\'")
 (use-package flycheck-plantuml
-  :ensure t
   :after plantuml-mode)
 
 (use-package markdown-mode
-  :ensure t
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
