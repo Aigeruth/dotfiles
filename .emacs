@@ -107,7 +107,7 @@
 
 (use-package ledger-mode
   :pin melpa
-  :mode "\\.ledger'\\"
+  :mode "\\.ledger\\'"
   :ensure t
   :config
   (setq ledger-default-date-format ledger-iso-date-format)
