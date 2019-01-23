@@ -17,6 +17,7 @@
   (require 'use-package)
   (setq use-package-always-ensure t))
 
+(use-package use-package-ensure-system-package)
 (use-package auto-package-update
   :init
   (setq auto-package-update-prompt-before-update t)
@@ -94,7 +95,8 @@
   )
 )
 
-(use-package rg)
+(use-package rg
+  :ensure-system-package (rg . "brew install ripgrep"))
 
 (use-package flycheck
   :init (global-flycheck-mode))
@@ -117,6 +119,7 @@
   :after plantuml-mode)
 
 (use-package markdown-mode
+  :ensure-system-package (multimarkdown . "brew install multimarkdown")
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
