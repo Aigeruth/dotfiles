@@ -107,15 +107,17 @@
 
 (use-package ledger-mode
   :pin melpa
+  :mode "\\.ledger'\\"
   :ensure t
   :config
   (setq ledger-default-date-format ledger-iso-date-format)
 )
 (use-package flycheck-ledger
   :pin melpa
-  :defer t
+  :ensure t
   :after ledger-mode)
 (use-package evil-ledger
+  :ensure t
   :after ledger-mode)
 
 (custom-set-variables
