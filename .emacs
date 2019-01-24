@@ -127,6 +127,22 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
+(use-package evil
+  :config
+  (evil-mode)
+)
+(use-package evil-org
+  :after (org evil)
+  :custom
+  (evil-want-C-i-jump nil)
+  :config
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys)
+  :hook
+  (org-mode . evil-org-mode)
+  (evil-org-mode . (lambda ()(evil-org-set-key-theme)))
+)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -138,7 +154,7 @@
     ("aaffceb9b0f539b6ad6becb8e96a04f2140c8faa1de8039a343a4f1e009174fb" default)))
  '(package-selected-packages
    (quote
-    (magit dracula-theme helm evil-numbers evil-org evil evil-tutor))))
+    (magit dracula-theme helm))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -167,13 +183,4 @@
 	    ))
 )
 
-
-; Evil mode configuration
-; Enable table
-(setq evil-want-C-i-jump nil)
-(require 'evil)
-(evil-mode 1)
-
-(require 'evil-org)
-(add-hook 'org-mode-hook 'evil-org-mode)
-(evil-org-set-key-theme '(navigation insert textobjects additional))
+;;; .emacs ends here
