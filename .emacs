@@ -116,7 +116,9 @@
 (use-package plantuml-mode
   :mode "\\.plantuml\\'")
 (use-package flycheck-plantuml
-  :after plantuml-mode)
+  :after plantuml-mode
+  :config
+  (flycheck-plantuml-setup))
 
 (use-package markdown-mode
   :ensure-system-package (multimarkdown . "brew install multimarkdown")
