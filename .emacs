@@ -33,41 +33,40 @@
 (setq exec-path (append exec-path '((substitute-in-file-name "$HOME/bin"))))
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
+; OrgMode configuration
 (use-package org
   :pin org
+  :ensure org-plus-contrib
   :bind (
     ("\C-cl" . org-store-link)
     ("\C-ca" . org-agenda)
     ("\C-cc" . org-capture)
     ("\C-cb" . org-switchb)
   )
-  :config
-  (setq org-agenda-files (directory-files-recursively "~/org/" "\.org$"))
-  '(org-export-backends (quote (ascii html md)))
-  (setq org-startup-indented t
-        org-hide-leading-stars t)
-  (setq org-todo-keywords
+  :custom
+  (org-agenda-files (directory-files-recursively "~/org/" "\.org$"))
+  (org-export-backends (quote (ascii html md)))
+  (org-habit-show-habits-only-for-today nil)
+  (org-hide-leading-stars t)
+  (org-log-done 'time)
+  (org-startup-indented t)
+  (org-todo-keywords
         '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)")
           (sequence "|" "CANCELED(c)")))
-  (setq org-log-done 'time)
+  :config
+  (require 'org-checklist)
+  (require 'org-habit)
+  (add-to-list 'org-modules 'org-habit)
   :hook
   (text-mode . visual-line-mode)
 )
-; OrgMode configuration
-(use-package org-plus-contrib
-  :no-require t
-  :pin org
-)
-(setq org-habit-show-habits-only-for-today nil)
-(require 'org-habit)
-(add-to-list 'org-modules 'org-habit)
-(require 'org-checklist)
-
 ;; Hide leading stars
 (use-package org-bullets
+  :after org
   :hook (org-mode . org-bullets-mode)
 )
 (use-package org-journal
+  :after org
   :config
   (defun org-journal-find-location ()
     ;; Open today's journal, but specify a non-nil prefix argument in order to
