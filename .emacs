@@ -49,6 +49,10 @@
   (org-habit-show-habits-only-for-today nil)
   (org-hide-leading-stars t)
   (org-log-done 'time)
+  (org-refile-allow-creating-parent-nodes 'confirm)
+  (org-refile-targets '((org-agenda-files :maxlevel . 3)))
+  (org-refile-use-outline-path 'file)
+  (org-outline-path-complete-in-steps nil)
   (org-startup-indented t)
   (org-todo-keywords
         '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)")
