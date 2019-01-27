@@ -33,6 +33,19 @@
 (setq exec-path (append exec-path '((substitute-in-file-name "$HOME/bin"))))
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
+;; Spelling
+(when (executable-find "hunspell")
+  (setq-default ispell-program-name "hunspell")
+  (setq ispell-dictionary "en_GB")
+  (setq ispell-local-dictionary "en_GB")
+  (setq ispell-local-dictionary-alist
+	  ;; Please note the list `("-d" "en_US")` contains ACTUAL parameters passed to hunspell
+	  ;; You could use `("-d" "en_US,en_US-med")` to check with multiple dictionaries
+	'(("en_GB" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_GB") nil utf-8))
+  )
+)
+
+
 ; OrgMode configuration
 (use-package org
   :pin org
@@ -63,6 +76,7 @@
   (add-to-list 'org-modules 'org-habit)
   :hook
   (text-mode . visual-line-mode)
+  (org-mode . turn-on-flyspell)
 )
 ;; Hide leading stars
 (use-package org-bullets
@@ -175,16 +189,5 @@
 (add-to-list 'default-frame-alist '(ns-appearance . light))
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
-
-;; Spelling
-(when (executable-find "hunspell")
-  (setq-default ispell-program-name "hunspell")
-  (setq ispell-local-dictionary "en_GB")
-  (setq ispell-local-dictionary-alist
-	  ;; Please note the list `("-d" "en_US")` contains ACTUAL parameters passed to hunspell
-	  ;; You could use `("-d" "en_US,en_US-med")` to check with multiple dictionaries
-	  '(("en_GB" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_GB") nil utf-8)
-	    ))
-)
 
 ;;; .emacs ends here
