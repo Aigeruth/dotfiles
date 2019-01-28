@@ -161,6 +161,10 @@
   (evil-org-mode . (lambda ()(evil-org-set-key-theme)))
 )
 
+(use-package helm
+  :config
+  (helm-mode))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -172,7 +176,7 @@
     ("aaffceb9b0f539b6ad6becb8e96a04f2140c8faa1de8039a343a4f1e009174fb" default)))
  '(package-selected-packages
    (quote
-    (magit dracula-theme helm))))
+    (magit dracula-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
