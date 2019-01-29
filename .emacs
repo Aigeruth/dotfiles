@@ -59,7 +59,6 @@
   :custom
   (org-agenda-files (directory-files-recursively "~/org/" "\.org$"))
   (org-export-backends (quote (ascii html md)))
-  (org-habit-show-habits-only-for-today nil)
   (org-hide-leading-stars t)
   (org-log-done 'time)
   (org-refile-allow-creating-parent-nodes 'confirm)
