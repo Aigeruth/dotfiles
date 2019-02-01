@@ -108,6 +108,8 @@
              "** How could I have made today better?\n"))
     ("j" "Journal entry" entry (function org-journal-find-location)
          "* %(format-time-string org-journal-time-format)%^{Title}\n%i%?")
+    ("t" "Task [Inbox]" entry (file "~/org/inbox.org")
+	 "* TODO %i%?")
   )
 )
 
