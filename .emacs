@@ -127,7 +127,10 @@
   :ensure-system-package (rg . "brew install ripgrep"))
 
 (use-package flycheck
-  :init (global-flycheck-mode))
+  :custom
+  (flycheck-keymap-prefix (kbd "C-c C-f"))
+  :init (global-flycheck-mode)
+)
 
 (use-package ledger-mode
   :pin melpa
