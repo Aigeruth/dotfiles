@@ -73,6 +73,16 @@
   (require 'org-checklist)
   (require 'org-habit)
   (add-to-list 'org-modules 'org-habit)
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '(
+     (calc . t)
+     (dot . t)
+     (plantuml . t)
+     (python . t)
+     (shell . t)
+     )
+   )
   :hook
   (text-mode . visual-line-mode)
   (org-mode . turn-on-flyspell)
