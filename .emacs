@@ -122,6 +122,14 @@
 	 "* TODO %i%?")
   )
 )
+(use-package alert
+  :custom
+  (alert-default-style 'osx-notifier)
+)
+(use-package org-alert
+  :config
+  (org-alert-enable)
+)
 
 (use-package rg
   :ensure-system-package (rg . "brew install ripgrep"))
