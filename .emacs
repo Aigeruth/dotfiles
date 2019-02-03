@@ -60,7 +60,7 @@
   (org-agenda-files (directory-files-recursively "~/org/" "\.org$"))
   (org-export-backends (quote (ascii html md)))
   (org-hide-leading-stars t)
-  (org-log-done 'time)
+  (org-log-done 'note)
   (org-refile-allow-creating-parent-nodes 'confirm)
   (org-refile-targets '((org-agenda-files :maxlevel . 3)))
   (org-refile-use-outline-path 'file)
