@@ -187,6 +187,20 @@
   :config
   (helm-mode))
 
+(use-package magit
+  :bind (
+    ("C-x g" . magit-status)
+  )
+  :pin melpa)
+(use-package evil-magit
+  :after magit
+)
+(use-package diff-hl
+  :config
+  (diff-hl-mode)
+  (diff-hl-flydiff-mode)
+)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -198,7 +212,7 @@
     ("aaffceb9b0f539b6ad6becb8e96a04f2140c8faa1de8039a343a4f1e009174fb" default)))
  '(package-selected-packages
    (quote
-    (magit dracula-theme))))
+    (dracula-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
