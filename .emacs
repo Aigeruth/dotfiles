@@ -66,6 +66,9 @@
   (org-refile-use-outline-path 'file)
   (org-outline-path-complete-in-steps nil)
   (org-startup-indented t)
+  (org-stuck-projects
+      '("+project/-MAYBE-DONE" ("NEXT" "TODO") ("@shop"))
+  )
   (org-todo-keywords
         '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)")
           (sequence "|" "CANCELED(c)")))
