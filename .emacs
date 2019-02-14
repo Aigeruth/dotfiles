@@ -131,7 +131,7 @@
 )
 (use-package org-alert
   :config
-  (org-alert-enable)
+  (org-alert-disable)
 )
 
 (use-package rg
