@@ -156,7 +156,10 @@
   :after ledger-mode)
 
 (use-package plantuml-mode
-  :mode "\\.plantuml\\'")
+  :mode "\\.plantuml\\'"
+  :custom
+  (plantuml-jar-path (car (last (file-expand-wildcards "/usr/local/Cellar/plantuml/*/libexec/plantuml.jar"))))
+)
 (use-package flycheck-plantuml
   :after plantuml-mode
   :config
