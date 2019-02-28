@@ -45,6 +45,8 @@
   )
 )
 
+; GPG config
+(setq epa-pinentry-mode 'loopback)
 
 ; OrgMode configuration
 (use-package org
