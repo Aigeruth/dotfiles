@@ -209,18 +209,18 @@
   (diff-hl-flydiff-mode)
 )
 
+(use-package dracula-theme
+  :config
+  (load-theme 'dracula t)
+)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(calendar-week-start-day 1)
- '(custom-safe-themes
-   (quote
-    ("aaffceb9b0f539b6ad6becb8e96a04f2140c8faa1de8039a343a4f1e009174fb" default)))
- '(package-selected-packages
-   (quote
-    (dracula-theme))))
+)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
