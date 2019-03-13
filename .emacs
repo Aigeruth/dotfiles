@@ -161,6 +161,7 @@
   :mode "\\.plantuml\\'"
   :custom
   (plantuml-jar-path (car (last (file-expand-wildcards "/usr/local/Cellar/plantuml/*/libexec/plantuml.jar"))))
+  (org-plantuml-jar-path plantuml-jar-path)
 )
 (use-package flycheck-plantuml
   :after plantuml-mode
