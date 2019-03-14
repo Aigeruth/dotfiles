@@ -1,0 +1,41 @@
+* Week %<%W, %G>
+Weekly review based on Getting Things Done from David Allen.
+
+https://gettingthingsdone.com/2018/08/episode-43-the-power-of-the-gtd-weekly-review/
+https://gist.github.com/mwfogleman/fbec1cc11f9eaac5e5d36b92c671ec8b
+** Get Clear
+*** Collect loose papers and materials [%]
+- [ ] Receipts
+- [ ] Mails
+*** Get "IN" to zero [%]
+- [ ] Email
+- [ ] Notes
+- [ ] Org-mode inbox
+- [ ] Browser
+*** Empty your head
+#+BEGIN_QUOTE
+Put in writing and process any uncaptured new projects, action items, waiting fors, someday/maybes, etc.
+#+END_QUOTE
+
+** Get Current
+*** Review next actions lists
+Mark off completed actions. Review for reminders of further action steps to record.
+*** Review previous calendar data
+Review past calendar in detail for remaining action items, reference data, etc., and transfer into the active system.
+*** Review upcoming calendar
+Review upcoming calendar events—long and short term. Capture actions triggered.
+
+Review as long ahead as there is stuff on it.
+*** Review waiting for list
+Record appropriate actions for any needed follow-up. Check off received ones.
+*** Review project (and larger outcome) lists
+Evaluate status of projects, goals, and outcomes, one by one, ensuring at least one current next action item on each. Browse through project plans, support material, and any other work-in-progress material to trigger new actions, completions, waiting fors, etc.
+*** Review any relevant checklists
+Use as a trigger for any new actions.
+** Get Creative
+*** Review Someday/Maybe list
+#+BEGIN_QUOTE
+Review for any projects or actions which may now have become active, and transfer to the appropriate list. Delete items no longer of interest.
+#+END_QUOTE
+*** Be creative & courageous
+Any new, wonderful, hare-brained, creative, thought-provoking, risk-taking ideas to add into your system?

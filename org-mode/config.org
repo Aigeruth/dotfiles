@@ -1,0 +1,16 @@
+Capture templates for Org mode.
+
+#+BEGIN_SRC emacs-lisp
+(setq org-capture-templates
+  `(
+    ("5" "5 minutes journal" entry (file+datetree "~/org/5-minutes-journal.org")
+         (file "~/dotfiles/org-mode/templates/5-minute-journal.org"))
+    ("j" "Journal entry" entry (function org-journal-find-location)
+         "* %(format-time-string org-journal-time-format)%^{Title}\n%i%?")
+    ("t" "Task [Inbox]" entry (file "~/org/inbox.org")
+	 "* TODO %i%?")
+    ("w" "Weekly Review" entry (file "~/org/weekly-review.org")
+         (file "~/dotfiles/org-mode/templates/weekly-review.org"))
+  )
+)
+#+END_SRC

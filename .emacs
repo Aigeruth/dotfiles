@@ -108,25 +108,7 @@
     ;; will add the new entry as a child entry.
     (goto-char (point-min)))
 )
-(setq org-capture-templates
-  `(
-    ("5" "5 minutes journal" entry (file+datetree "~/org/5-minutes-journal.org")
-     ,(concat "* Morning\n"
-             "** I am grateful for... (3x)\n"
-             "1.\n"
-             "** What would make today great? (3x)\n"
-             "1.\n"
-             "** Daily affirmations. I am...\n"
-             "* Evening\n"
-             "** 3 amazing things that happened today...\n"
-             "1.\n"
-             "** How could I have made today better?\n"))
-    ("j" "Journal entry" entry (function org-journal-find-location)
-         "* %(format-time-string org-journal-time-format)%^{Title}\n%i%?")
-    ("t" "Task [Inbox]" entry (file "~/org/inbox.org")
-	 "* TODO %i%?")
-  )
-)
+(org-babel-load-file "~/dotfiles/org-mode/config.org")
 (use-package alert
   :custom
   (alert-default-style 'osx-notifier)
