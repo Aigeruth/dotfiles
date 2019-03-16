@@ -192,10 +192,6 @@
   (diff-hl-flydiff-mode)
 )
 
-(use-package dracula-theme
-  :config
-  (load-theme 'dracula t)
-)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -213,13 +209,5 @@
 
 ;; Emacs configuration
 (setq backup-directory-alist `(("." . "~/.emacs_backups")))
-
-;; Appearance
-(load-theme 'dracula t)
-(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-(add-to-list 'default-frame-alist '(ns-appearance . light))
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 ;;; .emacs ends here
