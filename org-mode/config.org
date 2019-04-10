@@ -54,3 +54,30 @@ Capture templates for Org mode.
   )
 )
 #+END_SRC
+* Programming
+[[https://github.com/emacs-lsp/lsp-mode][Language Server Protocol support for Emacs]]b.
+
+#+BEGIN_SRC emacs-lisp
+(use-package lsp-mode
+  :commands lsp
+)
+
+(use-package lsp-ui
+  :after lsp-mode
+  :commands lsp-ui-mode
+  :hook
+  (lsp-mode . lsp-ui-mode)
+)
+(use-package company-lsp
+  :commands company-lsp)
+#+END_SRC
+
+** Java
+Eclipse Language Server
+
+#+BEGIN_SRC emacs-lisp
+(use-package lsp-java
+  :after lsp-mode
+  :hook
+  (java-mode . lsp-java-enable))
+#+END_SRC
