@@ -31,10 +31,19 @@ Homepage: https://draculatheme.com/
 Theme for Terminal.app in macOS:
 
 #+BEGIN_SRC shell
-mkdir -p ~/apps
-git clone https://github.com/dracula/terminal-app.git ~/apps/terminal-dracula-theme
-#+END_SRC
+export DRACULA_THEME_LOCATION=$HOME/apps/dracula-theme
+mkdir -p ~/apps/dracula-theme
+git clone https://github.com/dracula/terminal-app.git $DRACULA_THEME_LOCATION/terminal
 
+git clone https://github.com/dracula/xcode.git $DRACULA_THEME_LOCATION/xcode
+mkdir -p ~/Library/Developer/Xcode/UserData/FontAndColorThemes/
+ln -s $DRACULA_THEME/Dracula.xccolortheme ~/Library/Developer/Xcode/UserData/FontAndColorThemes/Dracula.xccolortheme
+#+END_SRC
+** Terminal colours
+#+BEGIN_SRC emacs-lisp
+(use-package eterm-256color
+  :ensure t)
+#+END_SRC
 
 * Org mode
 ** Capture
