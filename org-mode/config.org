@@ -8,7 +8,6 @@ Customising Emacs appearance with the goal of having it as minimal as possible:
       initial-scratch-message ""
       inhibit-startup-message t)
 ;; Appearance
-(load-theme 'dracula t)
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 (add-to-list 'default-frame-alist '(ns-appearance . light))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -16,6 +15,7 @@ Customising Emacs appearance with the goal of having it as minimal as possible:
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 #+END_SRC
+
 ** Dracula theme
 This is a dark theme that is available for many applications.
 
@@ -39,6 +39,7 @@ git clone https://github.com/dracula/xcode.git $DRACULA_THEME_LOCATION/xcode
 mkdir -p ~/Library/Developer/Xcode/UserData/FontAndColorThemes/
 ln -s $DRACULA_THEME/Dracula.xccolortheme ~/Library/Developer/Xcode/UserData/FontAndColorThemes/Dracula.xccolortheme
 #+END_SRC
+
 ** Terminal colours
 #+BEGIN_SRC emacs-lisp
 (use-package eterm-256color
