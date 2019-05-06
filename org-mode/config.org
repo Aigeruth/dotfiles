@@ -73,6 +73,9 @@ Capture templates for Org mode.
 )
 #+END_SRC
 * Programming
+:PROPERTIES:
+:header-args: :results silent
+:END:
 [[https://github.com/emacs-lsp/lsp-mode][Language Server Protocol support for Emacs]]b.
 
 #+BEGIN_SRC emacs-lisp
@@ -111,3 +114,52 @@ Eclipse Language Server
   :hook
   (java-mode . lsp-java-enable))
 #+END_SRC
+
+** Javascript
+Javascript development requires [[https://nodejs.org/en/][node.js]] to be installed. Current LTS version is 10.
+
+#+begin_src sh
+brew install node@10
+#+end_src
+
+To use this version of node.js, it has to be added to the =PATH= environmental variable.
+#+begin_src emacs-lisp
+(setenv "PATH" (concat
+  "/usr/local/opt/node@10/bin:"
+  (getenv "PATH"))
+)
+#+end_src
+
+=js2-mode= does not support syntax highlighting within the =render= blocks for HTML/XML currently. Emacs 27 will introduce support for this. [[https://github.com/mooz/js2-mode/pull/523][PR#523]] will implement it.
+#+begin_src emacs-lisp
+(use-package js2-mode
+  :mode (
+    ("\\.js\\'" . js2-mode)
+    ("\\.jsx\\'" . js2-jsx-mode)
+  )
+  :interpreter (
+    ("node" . js2-mode)
+    ("node" . js2-jsx-mode)
+  )
+  :hook
+  (js-mode-hook . js2-minor-mode)
+)
+#+end_src
+
+[[https://indium.readthedocs.io/en/latest/][Indium]] is a development environment that can offer debugging capabilities. It requires the =indium= package to be installed globally via npm.
+#+begin_src sh
+npm install -g indium
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package indium)
+#+end_src
+* Troubleshooting
+:PROPERTIES:
+:header-args: :results silent
+:END:
+When Emacs or =use-package= tries to download an outdated version of a package, the package cache has to be refreshed.
+
+#+begin_src emacs-lisp
+(package-refresh-contents)
+#+end_src
