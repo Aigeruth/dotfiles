@@ -40,6 +40,14 @@ mkdir -p ~/Library/Developer/Xcode/UserData/FontAndColorThemes/
 ln -s $DRACULA_THEME/Dracula.xccolortheme ~/Library/Developer/Xcode/UserData/FontAndColorThemes/Dracula.xccolortheme
 #+END_SRC
 
+** Powerline
+#+begin_src emacs-lisp
+(use-package powerline
+  :init
+  (powerline-default-theme)
+)
+#+end_src
+
 ** Terminal colours
 #+BEGIN_SRC emacs-lisp
 (use-package eterm-256color
