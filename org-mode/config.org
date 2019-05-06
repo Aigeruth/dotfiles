@@ -90,6 +90,18 @@ Capture templates for Org mode.
   :commands company-lsp)
 #+END_SRC
 
+Projectile is a library to help work with projects and navigate around files.
+
+#+begin_src emacs-lisp
+(use-package projectile
+  :pin melpa-stable
+  :config
+  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (projectile-mode +1)
+)
+#+end_src
+
 ** Java
 Eclipse Language Server
 
