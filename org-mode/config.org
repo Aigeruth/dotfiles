@@ -76,7 +76,7 @@ Capture templates for Org mode.
 :PROPERTIES:
 :header-args: :results silent
 :END:
-[[https://github.com/emacs-lsp/lsp-mode][Language Server Protocol support for Emacs]]b.
+** [[https://github.com/emacs-lsp/lsp-mode][Language Server Protocol support for Emacs]]
 
 #+BEGIN_SRC emacs-lisp
 (use-package lsp-mode
