@@ -104,8 +104,32 @@ Projectile is a library to help work with projects and navigate around files.
   (projectile-mode +1)
 )
 #+end_src
+*** Magit
+[[https://magit.vc/][Magit]] is a =git= client for Emacs: It has keybindings for =evil= as well.
 
-** Java
+#+begin_src emacs-lisp
+(use-package magit
+  :bind (
+    ("C-x g" . magit-status)
+  )
+  :pin melpa)
+(use-package evil-magit
+  :after (magit evil)
+)
+#+end_src
+
+*** Diffs
+=diff-hl= allows to highlight changes in a file under version control. Changes are marked on the left side of the window.
+#+begin_src emacs-lisp
+(use-package diff-hl
+  :config
+  (diff-hl-mode)
+  (diff-hl-flydiff-mode)
+)
+#+end_src
+
+** Language Support
+*** Java
 Eclipse Language Server
 
 #+BEGIN_SRC emacs-lisp
@@ -115,7 +139,7 @@ Eclipse Language Server
   (java-mode . lsp-java-enable))
 #+END_SRC
 
-** Javascript
+*** Javascript
 Javascript development requires [[https://nodejs.org/en/][node.js]] to be installed. Current LTS version is 10.
 
 #+begin_src sh

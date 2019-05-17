@@ -178,20 +178,6 @@
   :config
   (helm-mode))
 
-(use-package magit
-  :bind (
-    ("C-x g" . magit-status)
-  )
-  :pin melpa)
-(use-package evil-magit
-  :after magit
-)
-(use-package diff-hl
-  :config
-  (diff-hl-mode)
-  (diff-hl-flydiff-mode)
-)
-
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
