@@ -127,18 +127,6 @@
   :init (global-flycheck-mode)
 )
 
-(use-package ledger-mode
-  :pin melpa
-  :mode "\\.ledger\\'"
-  :config
-  (setq ledger-default-date-format ledger-iso-date-format)
-)
-(use-package flycheck-ledger
-  :pin melpa
-  :after ledger-mode)
-(use-package evil-ledger
-  :after ledger-mode)
-
 (use-package plantuml-mode
   :mode "\\.plantuml\\'"
   :custom

@@ -54,6 +54,29 @@ ln -s $DRACULA_THEME/Dracula.xccolortheme ~/Library/Developer/Xcode/UserData/Fon
   :ensure t)
 #+END_SRC
 
+* File types
+This section adds support for various file types.
+** Ledger
+Ledger is a commandline account software. These packages make easier editing a =.ledger= file by providing syntax highlight, tab-completion, etc.
+#+begin_src emacs-lisp
+(use-package ledger-mode
+  :pin melpa
+  :mode "\\.ledger\\'"
+  :config
+  (setq ledger-default-date-format ledger-iso-date-format)
+  :hook
+  (ledger-mode . (lambda  ()
+    (setq-local tab-always-indent 'complete)
+    (setq-local completion-cycle-threshold t)
+    (setq-local ledger-complete-in-steps t)))
+)
+(use-package flycheck-ledger
+  :pin melpa
+  :after ledger-mode)
+(use-package evil-ledger
+  :after ledger-mode)
+#+end_src
+
 * Org mode
 ** Capture
 Capture templates for Org mode.
