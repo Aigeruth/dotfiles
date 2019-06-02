@@ -95,6 +95,14 @@ Capture templates for Org mode.
   )
 )
 #+END_SRC
+** Export
+Org-mode has a powerful export backend, so documents or parts of them can be shared easily.
+
+#+begin_src emacs-lisp
+(use-package ox-jira)
+(use-package ox-minutes)
+(use-package ox-slack)
+#+end_src
 * Programming
 :PROPERTIES:
 :header-args: :results silent
