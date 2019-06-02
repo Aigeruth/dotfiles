@@ -79,13 +79,15 @@ Ledger is a commandline account software. These packages make easier editing a =
 
 * Org mode
 ** Capture
-Capture templates for Org mode.
+Capture templates for Org mode. I use these templates for taking notes quickly, completing a checklist, or doing a specific exercise.
 
 #+BEGIN_SRC emacs-lisp
 (setq org-capture-templates
   `(
     ("5" "5 minutes journal" entry (file+datetree "~/org/5-minutes-journal.org")
          (file "~/dotfiles/org-mode/templates/5-minute-journal.org"))
+    ("f" "Fear setting" entry (file "~/org/fears.org")
+         (file "~/dotfiles/org-mode/templates/fear-setting.org"))
     ("j" "Journal entry" entry (function org-journal-find-location)
          "* %(format-time-string org-journal-time-format)%^{Title}\n%i%?")
     ("t" "Task [Inbox]" entry (file "~/org/inbox.org")
