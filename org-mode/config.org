@@ -123,8 +123,9 @@ Org-mode has a powerful export backend, so documents or parts of them can be sha
 (use-package company-lsp
   :commands company-lsp)
 #+END_SRC
-
-Projectile is a library to help work with projects and navigate around files.
+** Projects and Version Control
+*** Projectile
+It is a library to help work with projects and navigate around files.
 
 #+begin_src emacs-lisp
 (use-package projectile
@@ -208,6 +209,35 @@ npm install -g indium
 
 #+begin_src emacs-lisp
 (use-package indium)
+#+end_src
+** Remote File Editing
+As Emacs is not installed on remote machine as =vi= is usually. It is better to connect to remote host through Emacs and edit files transparently.
+*** TRAMP
+#+begin_src emacs-lisp
+(use-package tramp
+  :init
+  (setq tramp-default-method "ssh")
+  (setq tramp-terminal-type "tramp")
+)
+#+end_src
+
+TRAMP might hangs if the target server does not use a standard shell with =$= as a separator (e.g. oh-my-zsh package). I set the terminal type variable (=$TRAMP=) to =tramp=, so the shell can act differently and revert to the default behaviour to work correctly with TRAMP.
+
+Following section has to be included into the =.zshrc= file:
+#+begin_src sh
+if [[ "$TERM" == "tramp" ]]
+then
+  unsetopt zle
+  unsetopt prompt_cr
+  unsetopt prompt_subst
+  if whence -w precmd >/dev/null; then
+      unfunction precmd
+  fi
+  if whence -w preexec >/dev/null; then
+      unfunction preexec
+  fi
+  PS1='$ '
+fi
 #+end_src
 * Troubleshooting
 :PROPERTIES:
