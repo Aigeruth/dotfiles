@@ -173,6 +173,24 @@ Eclipse Language Server
   (java-mode . lsp-java-enable))
 #+END_SRC
 
+Hook up the [[https://github.com/Fuco1/smartparens][smartparens]] to Java:
+
+#+BEGIN_SRC emacs-lisp
+(use-package smartparens
+  :hook
+  (java-mode . smartparens-mode))
+#+END_SRC
+
+Use Google Java styleguide:
+
+#+begin_src emacs-lisp
+(use-package google-c-style
+  :hook
+  (java-mode . google-set-c-style)
+  (java-mode . google-make-newline-indent)
+)
+#+end_src
+
 *** Javascript
 Javascript development requires [[https://nodejs.org/en/][node.js]] to be installed. Current LTS version is 10.
 
