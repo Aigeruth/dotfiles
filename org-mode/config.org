@@ -109,23 +109,43 @@ Org-mode has a powerful export backend, so documents or parts of them can be sha
 :PROPERTIES:
 :header-args: :results silent
 :END:
-** [[https://github.com/emacs-lsp/lsp-mode][Language Server Protocol support for Emacs]]
 
-#+BEGIN_SRC emacs-lisp
-(use-package lsp-mode
-  :commands lsp
-)
+** Tools
+*** Company
+Company is a text completion framework for Emacs. The name stands for "complete anything". It uses pluggable back-ends and front-ends to retrieve and display completion candidates.
 
-(use-package lsp-ui
-  :after lsp-mode
-  :commands lsp-ui-mode
-  :hook
-  (lsp-mode . lsp-ui-mode)
+#+begin_src emacs-lisp
+(use-package company
+  :pin melpa-stable
+  :init
+  (global-company-mode)
 )
-(use-package company-lsp
-  :commands company-lsp)
-#+END_SRC
-** Projects and Version Control
+#+end_src
+*** Diffs
+=diff-hl= allows to highlight changes in a file under version control. Changes are marked on the left side of the window.
+#+begin_src emacs-lisp
+(use-package diff-hl
+  :config
+  (diff-hl-mode)
+  (diff-hl-flydiff-mode)
+)
+#+end_src
+
+*** Magit
+[[https://magit.vc/][Magit]] is a =git= client for Emacs: It has keybindings for =evil= as well.
+
+#+begin_src emacs-lisp
+(use-package magit
+  :bind (
+    ("C-x g" . magit-status)
+  )
+  :pin melpa-stable)
+(use-package evil-magit
+  :after (magit evil)
+  :pin melpa-stable
+)
+#+end_src
+
 *** Projectile
 It is a library to help work with projects and navigate around files.
 
@@ -138,50 +158,61 @@ It is a library to help work with projects and navigate around files.
   (projectile-mode +1)
 )
 #+end_src
-*** Magit
-[[https://magit.vc/][Magit]] is a =git= client for Emacs: It has keybindings for =evil= as well.
+
+*** Treemacs
+#+begin_quote
+Treemacs is a file and project explorer similar to NeoTree or vim’s NerdTree, but largely inspired by the Project Explorer in Eclipse. It shows the file system outlines of your projects in a simple tree layout allowing quick navigation and exploration, while also possessing basic file management utilities. Specifically a quick feature overview looks as follows:
+#+end_quote
 
 #+begin_src emacs-lisp
-(use-package magit
-  :bind (
-    ("C-x g" . magit-status)
-  )
-  :pin melpa)
-(use-package evil-magit
-  :after (magit evil)
-)
+(use-package treemacs
+  :defer t
+  :pin melpa-stable)
 #+end_src
 
-*** Diffs
-=diff-hl= allows to highlight changes in a file under version control. Changes are marked on the left side of the window.
+Projectile integration
 #+begin_src emacs-lisp
-(use-package diff-hl
+(use-package treemacs-projectile
+  :after treemacs projectile
+  :pin melpa-stable)
+#+end_src
+*** yasnippet
+#+begin_src emacs-lisp
+(use-package yasnippet
+  :pin melpa-stable)
+#+end_src
+** [[https://github.com/emacs-lsp/lsp-mode][Language Server Protocol support for Emacs]]
+#+BEGIN_SRC emacs-lisp
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+)
+#+END_SRC
+=lsp-deferred= allows to delay the LSP startup until the buffer is visible.
+
+#+BEGIN_SRC emacs-lisp
+(use-package company-lsp)
+(use-package lsp-ui
+  :commands lsp-ui-mode)
+#+END_SRC
+
+Debug Adapter Protocol implementation for Emacs.
+#+BEGIN_SRC emacs-lisp
+(use-package dap-mode
+  :after lsp-mode
   :config
-  (diff-hl-mode)
-  (diff-hl-flydiff-mode)
-)
-#+end_src
+  (dap-mode t)
+  (dap-ui-mode t))
+#+END_SRC
 
+Treemacs integration allows to have an Eclipse style explorer view in a sidebar.
+#+BEGIN_SRC emacs-lisp
+(use-package lsp-treemacs
+  :after lsp-mode
+  :commands lsp-treemacs-errors-list)
+#+END_SRC
 ** Language Support
 *** Java
-Eclipse Language Server
-
-#+BEGIN_SRC emacs-lisp
-(use-package lsp-java
-  :after lsp-mode
-  :hook
-  (java-mode . lsp-java-enable))
-#+END_SRC
-
-Hook up the [[https://github.com/Fuco1/smartparens][smartparens]] to Java:
-
-#+BEGIN_SRC emacs-lisp
-(use-package smartparens
-  :hook
-  (java-mode . smartparens-mode))
-#+END_SRC
-
-Use Google Java styleguide:
+I prefer to format Java code according to the Google style guide:
 
 #+begin_src emacs-lisp
 (use-package google-c-style
@@ -190,6 +221,33 @@ Use Google Java styleguide:
   (java-mode . google-make-newline-indent)
 )
 #+end_src
+
+Eclipse Language Server extension configured to follow the Google style guide.
+
+#+BEGIN_SRC emacs-lisp
+(use-package lsp-java
+  :after lsp
+  :init
+  (setq
+    lsp-java-auto-build nil
+    lsp-java-format-settings-url "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml"
+    lsp-java-format-settings-profile "GoogleStyle"
+    lsp-java-save-action-organize-imports t)
+  :config
+  (add-hook 'java-mode-hook 'lsp)
+)
+#+END_SRC
+Notes:
+- It is important to specify the profile for the format settings to make it work.
+- I do not need automatic building as I intend to use Bazel.
+
+Hook up the [[https://github.com/Fuco1/smartparens][smartparens]] to Java:
+
+#+BEGIN_SRC emacs-lisp
+(use-package smartparens
+  :hook
+  (java-mode . smartparens-mode))
+#+END_SRC
 
 *** Javascript
 Javascript development requires [[https://nodejs.org/en/][node.js]] to be installed. Current LTS version is 10.
