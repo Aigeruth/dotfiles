@@ -281,6 +281,12 @@ To use this version of node.js, it has to be added to the =PATH= environmental v
 )
 #+end_src
 
+=lsp-mode= has Javascript and TypeScript support built-in, but it require an =npm= package to be installed:
+#+begin_src sh
+npm install -g typescript
+npm install -g typescript-language-server
+#+end_src
+
 =js2-mode= does not support syntax highlighting within the =render= blocks for HTML/XML currently. Emacs 27 will introduce support for this. [[https://github.com/mooz/js2-mode/pull/523][PR#523]] will implement it.
 #+begin_src emacs-lisp
 (use-package js2-mode
@@ -292,14 +298,23 @@ To use this version of node.js, it has to be added to the =PATH= environmental v
     ("node" . js2-mode)
     ("node" . js2-jsx-mode)
   )
+  :init
+  (setq js2-basic-offset 2)
   :hook
   (js-mode-hook . js2-minor-mode)
 )
 #+end_src
 
-[[https://indium.readthedocs.io/en/latest/][Indium]] is a development environment that can offer debugging capabilities. It requires the =indium= package to be installed globally via npm.
+Prettier is a nice way to automatically format Javascript code. It has to be also installed and present in the =$PATH=.
+
 #+begin_src sh
-npm install -g indium
+npm install -g prettier
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package prettier-js
+  :hook (js-mode . prettier-js-mode)
+)
 #+end_src
 
 #+begin_src emacs-lisp
