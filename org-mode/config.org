@@ -200,6 +200,8 @@ Projectile integration
 #+BEGIN_SRC emacs-lisp
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
+  :init
+  (setq lsp-enable-indentation nil)
 )
 #+END_SRC
 =lsp-deferred= allows to delay the LSP startup until the buffer is visible.
