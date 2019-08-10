@@ -63,6 +63,11 @@ Ledger is a commandline account software. These packages make easier editing a =
 (use-package ledger-mode
   :pin melpa
   :mode "\\.ledger\\'"
+  :init
+  (setq
+    ledger-post-account-alignment-column 2
+    ledger-post-amount-alignment-column  64
+  )
   :config
   (setq ledger-default-date-format ledger-iso-date-format)
   :hook
