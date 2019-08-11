@@ -121,9 +121,6 @@
   (org-alert-disable)
 )
 
-(use-package rg
-  :ensure-system-package (rg . "brew install ripgrep"))
-
 (use-package flycheck
   :custom
   (flycheck-keymap-prefix (kbd "C-c C-f"))

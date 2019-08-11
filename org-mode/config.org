@@ -220,14 +220,18 @@ It is a library to help work with projects and navigate around files.
 #+end_src
 
 =ripgrep= integration for faster searching:
-#+begin_src sh
-brew install ripgrep
-#+end_src
-
 #+begin_src emacs-lisp
-(use-package projectile-ripgrep)
+(use-package rg
+  :ensure-system-package (rg . "brew install ripgrep")
+  :config
+  (rg-enable-default-bindings)
+)
 #+end_src
-
+Commands:
+- =rg= :: interactive input for search
+- =rg-project= :: search in e.g. a Projectile project
+Key bindings:
+- =C-c s p= :: search in e.g. a Projectile project
 *** Treemacs
 #+begin_quote
 Treemacs is a file and project explorer similar to NeoTree or vim’s NerdTree, but largely inspired by the Project Explorer in Eclipse. It shows the file system outlines of your projects in a simple tree layout allowing quick navigation and exploration, while also possessing basic file management utilities. Specifically a quick feature overview looks as follows:
