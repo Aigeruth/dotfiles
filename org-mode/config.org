@@ -64,6 +64,15 @@ ln -s $DRACULA_THEME/Dracula.xccolortheme ~/Library/Developer/Xcode/UserData/Fon
   (evil-mode)
 )
 #+end_src
+
+Add support increasing and decreasing numbers:
+#+begin_src emacs-lisp
+(use-package evil-numbers
+  :bind
+  ("C-c +" . evil-numbers/inc-at-pt)
+  ("C-c -" . evil-numbers/dec-at-pt)
+)
+#+end_src
 ** Org
 *** Capture
 Capture templates for Org mode. I use these templates for taking notes quickly, completing a checklist, or doing a specific exercise.
