@@ -183,6 +183,22 @@ PlantUML mode adds syntax highlighting and embedded rendering for diagram.
   :config
   (flycheck-plantuml-setup))
 #+end_src
+** YAML
+[[https://yaml.org/][YAML]] format is widely adopted for configuration files.
+
+#+begin_src emacs-lisp
+(use-package yaml-mode
+  :mode "\\(\\.\\(yaml\\|yml\\)\\)\\'"
+)
+(use-package flycheck-yamllint
+  :ensure-system-package (rg . "brew install yamllint")
+  :defer t
+  :after flycheck
+  :init
+  (add-hook 'flycheck-mode-hook 'flycheck-yamllint-setup)
+)
+#+end_src
+
 * Programming
 :PROPERTIES:
 :header-args: :results silent
