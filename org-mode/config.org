@@ -321,7 +321,11 @@ Projectile integration
 *** yasnippet
 #+begin_src emacs-lisp
 (use-package yasnippet
-  :pin melpa-stable)
+  :pin melpa-stable
+  :config
+  (yas-global-mode 1)
+)
+(use-package yasnippet-snippets)
 #+end_src
 ** [[https://github.com/emacs-lsp/lsp-mode][Language Server Protocol support for Emacs]]
 #+BEGIN_SRC emacs-lisp
@@ -393,6 +397,11 @@ Hook up the [[https://github.com/Fuco1/smartparens][smartparens]] to Java:
   (java-mode . smartparens-mode))
 #+END_SRC
 
+Add a few useful Java snippets:
+#+begin_src emacs-lisp
+(use-package yasnippet-java-mode)
+#+end_src
+
 *** Javascript
 Javascript development requires [[https://nodejs.org/en/][node.js]] to be installed. Current LTS version is 10.
 
@@ -444,6 +453,10 @@ npm install -g prettier
 )
 #+end_src
 
+**** ReactJS
+#+begin_src emacs-lisp
+(use-package react-snippets)
+#+end_src
 ** Remote File Editing
 As Emacs is not installed on remote machine as =vi= is usually. It is better to connect to remote host through Emacs and edit files transparently.
 *** TRAMP
