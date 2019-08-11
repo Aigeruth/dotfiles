@@ -141,14 +141,6 @@
   :config
   (flycheck-plantuml-setup))
 
-(use-package markdown-mode
-  :ensure-system-package (multimarkdown . "brew install multimarkdown")
-  :commands (markdown-mode gfm-mode)
-  :mode (("README\\.md\\'" . gfm-mode)
-         ("\\.md\\'" . markdown-mode)
-         ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
-
 (use-package evil
   :config
   (evil-mode)

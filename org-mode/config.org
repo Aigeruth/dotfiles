@@ -82,7 +82,17 @@ Ledger is a commandline account software. These packages make easier editing a =
 (use-package evil-ledger
   :after ledger-mode)
 #+end_src
-
+** Markdown
+[[https://spec.commonmark.org/][Markdown]] is one of the most popular markup languages.
+#+begin_src emacs-lisp
+(use-package markdown-mode
+  :ensure-system-package (multimarkdown . "brew install multimarkdown")
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+#+end_src
 * Org mode
 ** Capture
 Capture templates for Org mode. I use these templates for taking notes quickly, completing a checklist, or doing a specific exercise.
