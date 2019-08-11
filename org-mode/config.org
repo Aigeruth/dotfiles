@@ -399,7 +399,7 @@ Hook up the [[https://github.com/Fuco1/smartparens][smartparens]] to Java:
 
 Add a few useful Java snippets:
 #+begin_src emacs-lisp
-(use-package yasnippet-java-mode)
+(use-package java-snippets)
 #+end_src
 
 *** Javascript
