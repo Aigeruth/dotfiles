@@ -130,33 +130,6 @@
   :init (global-flycheck-mode)
 )
 
-(use-package plantuml-mode
-  :mode "\\.plantuml\\'"
-  :custom
-  (plantuml-jar-path (car (last (file-expand-wildcards "/usr/local/Cellar/plantuml/*/libexec/plantuml.jar"))))
-  (org-plantuml-jar-path plantuml-jar-path)
-)
-(use-package flycheck-plantuml
-  :after plantuml-mode
-  :config
-  (flycheck-plantuml-setup))
-
-(use-package evil
-  :config
-  (evil-mode)
-)
-(use-package evil-org
-  :after (org evil)
-  :custom
-  (evil-want-C-i-jump nil)
-  :config
-  (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys)
-  :hook
-  (org-mode . evil-org-mode)
-  (evil-org-mode . (lambda ()(evil-org-set-key-theme)))
-)
-
 (use-package helm
   :config
   (helm-mode))
