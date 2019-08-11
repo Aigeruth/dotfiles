@@ -317,9 +317,6 @@ npm install -g prettier
 )
 #+end_src
 
-#+begin_src emacs-lisp
-(use-package indium)
-#+end_src
 ** Remote File Editing
 As Emacs is not installed on remote machine as =vi= is usually. It is better to connect to remote host through Emacs and edit files transparently.
 *** TRAMP
