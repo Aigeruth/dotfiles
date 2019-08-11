@@ -56,6 +56,16 @@ ln -s $DRACULA_THEME/Dracula.xccolortheme ~/Library/Developer/Xcode/UserData/Fon
 #+END_SRC
 
 * Modes
+** Company
+Company is a text completion framework for Emacs. The name stands for "complete anything". It uses pluggable back-ends and front-ends to retrieve and display completion candidates.
+
+#+begin_src emacs-lisp
+(use-package company
+  :pin melpa-stable
+  :init
+  (global-company-mode)
+)
+#+end_src
 ** Evil
 [[https://github.com/emacs-evil][Evil]] is an =vi= layer for Emacs. I used =vim= for many years and I prefer to use these keybindings.
 #+begin_src emacs-lisp
@@ -131,6 +141,34 @@ Org-mode has a powerful export backend, so documents or parts of them can be sha
 (use-package ox-jira)
 (use-package ox-minutes)
 (use-package ox-slack)
+#+end_src
+** RestClient
+#+begin_quote
+This is a tool to manually explore and test HTTP REST webservices. Runs queries from a plain-text query sheet, displays results as a pretty-printed XML, JSON and even images.
+#+end_quote
+
+#+begin_src emacs-lisp
+(use-package restclient)
+(use-package restclient-helm)
+#+end_src
+
+=org-babel= support:
+#+begin_src emacs-lisp
+(use-package ob-restclient
+  :config
+  (org-babel-do-load-languages
+    'org-babel-load-languages
+    (add-to-list 'org-babel-load-languages '(restclient . t) t)
+  )
+)
+#+end_src
+
+Add completion support to =company-mode=:
+#+begin_src emacs-lisp
+(use-package company-restclient
+  :config
+  (add-to-list 'company-backends 'company-restclient)
+)
 #+end_src
 * File types
 This section adds support for various file types.
@@ -212,16 +250,6 @@ PlantUML mode adds syntax highlighting and embedded rendering for diagram.
 :END:
 
 ** Tools
-*** Company
-Company is a text completion framework for Emacs. The name stands for "complete anything". It uses pluggable back-ends and front-ends to retrieve and display completion candidates.
-
-#+begin_src emacs-lisp
-(use-package company
-  :pin melpa-stable
-  :init
-  (global-company-mode)
-)
-#+end_src
 *** Diffs
 =diff-hl= allows to highlight changes in a file under version control. Changes are marked on the left side of the window.
 #+begin_src emacs-lisp
