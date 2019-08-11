@@ -121,12 +121,6 @@
   (org-alert-disable)
 )
 
-(use-package flycheck
-  :custom
-  (flycheck-keymap-prefix (kbd "C-c C-f"))
-  :init (global-flycheck-mode)
-)
-
 (use-package helm
   :config
   (helm-mode))

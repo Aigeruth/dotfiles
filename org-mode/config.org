@@ -73,6 +73,15 @@ Add support increasing and decreasing numbers:
   ("C-c -" . evil-numbers/dec-at-pt)
 )
 #+end_src
+** Flycheck
+[[https://www.flycheck.org/en/latest/][Flycheck]] enabled syntax checking for many languages and file types (50+).
+#+begin_src emacs-lisp
+(use-package flycheck
+  :custom
+  (flycheck-keymap-prefix (kbd "C-c C-f"))
+  :init (global-flycheck-mode)
+)
+#+end_src
 ** Org
 *** Capture
 Capture templates for Org mode. I use these templates for taking notes quickly, completing a checklist, or doing a specific exercise.
