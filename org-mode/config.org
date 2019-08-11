@@ -73,6 +73,13 @@ Add support increasing and decreasing numbers:
   ("C-c -" . evil-numbers/dec-at-pt)
 )
 #+end_src
+
+=evil-surround= is all about "surroundings": parentheses, brackets, quotes, XML tags, and more. The plugin provides mappings to easily delete, change and add such surroundings in pairs.
+#+begin_src emacs-lisp
+(use-package evil-surround
+  :config
+  (global-evil-surround-mode 1))
+#+end_src
 ** Flycheck
 [[https://www.flycheck.org/en/latest/][Flycheck]] enabled syntax checking for many languages and file types (50+).
 #+begin_src emacs-lisp
