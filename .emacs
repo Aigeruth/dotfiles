@@ -116,10 +116,6 @@
   (alert-default-style 'osx-notifier)
 )
 
-(use-package helm
-  :config
-  (helm-mode))
-
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

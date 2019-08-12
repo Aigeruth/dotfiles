@@ -99,6 +99,18 @@ Add support increasing and decreasing numbers:
   :init (global-flycheck-mode)
 )
 #+end_src
+** Helm
+#+begin_quote
+[[https://emacs-helm.github.io/helm/][Helm]] is an Emacs framework for incremental completions and narrowing selections. It helps to rapidly complete file names, buffer names, or any other Emacs interactions requiring selecting an item from a list of possible choices.
+#+end_quote
+
+#+begin_src emacs-lisp
+(use-package helm
+  :config
+  (helm-mode))
+#+end_src
+*** TODO https://github.com/emacs-helm/helm-system-packages
+
 ** Org
 *** Capture
 Capture templates for Org mode. I use these templates for taking notes quickly, completing a checklist, or doing a specific exercise.
