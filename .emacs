@@ -115,10 +115,6 @@
   :custom
   (alert-default-style 'osx-notifier)
 )
-(use-package org-alert
-  :config
-  (org-alert-disable)
-)
 
 (use-package helm
   :config
