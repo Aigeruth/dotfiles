@@ -94,11 +94,6 @@
   (text-mode . visual-line-mode)
   (org-mode . turn-on-flyspell)
 )
-;; Hide leading stars
-(use-package org-bullets
-  :after org
-  :hook (org-mode . org-bullets-mode)
-)
 (use-package org-journal
   :after org
   :config

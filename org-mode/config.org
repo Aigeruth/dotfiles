@@ -112,6 +112,15 @@ Add support increasing and decreasing numbers:
 *** TODO https://github.com/emacs-helm/helm-system-packages
 
 ** Org
+*** Appearance
+=org-bullets= replaces the leading stars with Unicode characters.
+#+begin_src emacs-lisp
+(use-package org-bullets
+  :after org
+  :hook (org-mode . org-bullets-mode)
+)
+#+end_src
+
 *** Capture
 Capture templates for Org mode. I use these templates for taking notes quickly, completing a checklist, or doing a specific exercise.
 
