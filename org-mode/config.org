@@ -138,8 +138,8 @@ There are special shortcuts for =evil-mode=.
 Org-mode has a powerful export backend, so documents or parts of them can be shared easily.
 
 #+begin_src emacs-lisp
+(require 'ox-confluence)
 (use-package ox-jira)
-(use-package ox-minutes)
 (use-package ox-slack)
 #+end_src
 ** RestClient
