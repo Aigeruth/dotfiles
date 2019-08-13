@@ -238,7 +238,7 @@ PlantUML mode adds syntax highlighting and embedded rendering for diagram.
 
 #+begin_src emacs-lisp
 (use-package plantuml-mode
-  :ensure-system-package (rg . "brew install plantuml")
+  :ensure-system-package (plantuml . "brew install plantuml")
   :mode "\\.plantuml\\'"
   :custom
   (plantuml-jar-path (car (last (file-expand-wildcards "/usr/local/Cellar/plantuml/*/libexec/plantuml.jar"))))
@@ -257,7 +257,7 @@ PlantUML mode adds syntax highlighting and embedded rendering for diagram.
   :mode "\\(\\.\\(yaml\\|yml\\)\\)\\'"
 )
 (use-package flycheck-yamllint
-  :ensure-system-package (rg . "brew install yamllint")
+  :ensure-system-package (yamllint . "brew install yamllint")
   :defer t
   :after flycheck
   :init
@@ -464,12 +464,9 @@ npm install -g typescript-language-server
 
 Prettier is a nice way to automatically format Javascript code. It has to be also installed and present in the =$PATH=.
 
-#+begin_src sh
-npm install -g prettier
-#+end_src
-
 #+begin_src emacs-lisp
 (use-package prettier-js
+  :ensure-system-package (prettier . "npm install -p prettier")
   :hook (js-mode . prettier-js-mode)
 )
 #+end_src
