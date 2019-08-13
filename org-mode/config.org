@@ -55,6 +55,17 @@ ln -s $DRACULA_THEME/Dracula.xccolortheme ~/Library/Developer/Xcode/UserData/Fon
   :ensure t)
 #+END_SRC
 
+* Tools
+** Package management
+I prefer using [[https://brew.sh/][Homebrew]] for managing packages on macOS and it does not require =sudo= to install packages.
+#+begin_src emacs-lisp
+(use-package system-packages
+  :init
+  (setq
+    system-packages-use-sudo nil
+    system-packages-package-manager 'brew)
+)
+#+end_src
 * Modes
 ** Company
 Company is a text completion framework for Emacs. The name stands for "complete anything". It uses pluggable back-ends and front-ends to retrieve and display completion candidates.
