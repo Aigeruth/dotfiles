@@ -458,18 +458,12 @@ npm install -g typescript-language-server
 =js2-mode= does not support syntax highlighting within the =render= blocks for HTML/XML currently. Emacs 27 will introduce support for this. [[https://github.com/mooz/js2-mode/pull/523][PR#523]] will implement it.
 #+begin_src emacs-lisp
 (use-package js2-mode
-  :mode (
-    ("\\.js\\'" . js2-mode)
-    ("\\.jsx\\'" . js2-jsx-mode)
-  )
   :interpreter (
     ("node" . js2-mode)
-    ("node" . js2-jsx-mode)
   )
   :init
   (setq js2-basic-offset 2)
-  :hook
-  (js-mode-hook . js2-minor-mode)
+  :hook (js-mode-hook . js2-minor-mode)
 )
 #+end_src
 
@@ -483,6 +477,13 @@ Prettier is a nice way to automatically format Javascript code. It has to be als
 #+end_src
 
 **** ReactJS
+=rjsx-mode= add JSX support until Emacs 27 is released with native support.
+#+begin_src emacs-lisp
+(use-package rjsx-mode
+  :hook (rjsx-mode . lsp)
+)
+#+end_src
+
 #+begin_src emacs-lisp
 (use-package react-snippets)
 #+end_src
