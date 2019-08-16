@@ -364,7 +364,13 @@ Projectile integration
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :init
-  (setq lsp-enable-indentation nil)
+  (setq
+    lsp-enable-indentation nil
+    lsp-use-native-json t
+  )
+  :hook (
+    (js-mode . lsp)
+  )
 )
 #+END_SRC
 =lsp-deferred= allows to delay the LSP startup until the buffer is visible.
@@ -462,8 +468,8 @@ npm install -g typescript-language-server
     ("node" . js2-mode)
   )
   :init
-  (setq js2-basic-offset 2)
-  :hook (js-mode-hook . js2-minor-mode)
+  (setq js-indent-level 2)
+  :hook (js-mode . js2-minor-mode)
 )
 #+end_src
 
@@ -477,12 +483,7 @@ Prettier is a nice way to automatically format Javascript code. It has to be als
 #+end_src
 
 **** ReactJS
-=rjsx-mode= add JSX support until Emacs 27 is released with native support.
-#+begin_src emacs-lisp
-(use-package rjsx-mode
-  :hook (rjsx-mode . lsp)
-)
-#+end_src
+Emacs 27.1+ has a native support for =.jsx= files. I've compiled the HEAD version of Emacs to get this feature.
 
 #+begin_src emacs-lisp
 (use-package react-snippets)
