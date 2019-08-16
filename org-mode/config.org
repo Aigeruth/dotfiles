@@ -439,6 +439,12 @@ Add a few useful Java snippets:
 #+begin_src emacs-lisp
 (use-package java-snippets)
 #+end_src
+**** Gradle
+Gradle uses Groovy syntax:
+#+begin_src emacs-lisp
+(use-package groovy-mode
+  :mode "\\.groovy\\'\\|\\.gradle\\'")
+#+end_src
 
 *** Javascript
 Javascript development requires [[https://nodejs.org/en/][node.js]] to be installed. Current LTS version is 10.
