@@ -333,6 +333,14 @@ Commands:
 - =rg-project= :: search in e.g. a Projectile project
 Key bindings:
 - =C-c s p= :: search in e.g. a Projectile project
+
+*** Smartparens
+Smartparens is a minor mode for dealing with pairs in Emacs.
+
+#+BEGIN_SRC emacs-lisp
+(use-package smartparens)
+#+END_SRC
+
 *** Treemacs
 #+begin_quote
 Treemacs is a file and project explorer similar to NeoTree or vim’s NerdTree, but largely inspired by the Project Explorer in Eclipse. It shows the file system outlines of your projects in a simple tree layout allowing quick navigation and exploration, while also possessing basic file management utilities. Specifically a quick feature overview looks as follows:
@@ -359,17 +367,118 @@ Projectile integration
 )
 (use-package yasnippet-snippets)
 #+end_src
+
+** Language Support
+*** Java
+I prefer to format Java code according to the Google style guide:
+
+#+begin_src emacs-lisp
+(use-package google-c-style
+  :hook
+  (java-mode . google-set-c-style)
+  (java-mode . google-make-newline-indent)
+)
+#+end_src
+
+Smartparens always help:
+#+begin_src emacs-lisp
+(add-hook 'java-mode-hook #'smartparens-strict-mode)
+#+end_src
+
+Add a few useful Java snippets:
+#+begin_src emacs-lisp
+(use-package java-snippets)
+#+end_src
+**** Gradle
+Gradle uses Groovy syntax:
+#+begin_src emacs-lisp
+(use-package groovy-mode
+  :mode "\\.groovy\\'\\|\\.gradle\\'")
+#+end_src
+
+*** Javascript
+Javascript development requires [[https://nodejs.org/en/][node.js]] to be installed. Current LTS version is 10.
+
+Homebrew installs versioned packages like =node= into a separate directory and it has to be added to the =$PATH= variable to be detected.
+
+=npm= installs project specific binaries into the =node_modules/.bin= directory. This directory has to be added to =$PATH= to be detected. =add-node-modules-path= package can take care of this.
+
+#+begin_src emacs-lisp
+(setenv "PATH" (concat
+  "/usr/local/opt/node@10/bin:"
+  (getenv "PATH"))
+)
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package add-node-modules-path
+  :ensure-system-package ("/usr/local/opt/node@10/bin/node" . "brew install node@10")
+  :hook (
+    (js-mode . add-node-modules-path)
+    (jest-mode . add-node-modules-path)
+  )
+)
+#+end_src
+
+=js2-mode= does not support syntax highlighting within the =render= blocks for HTML/XML currently. Emacs 27 will introduce support for this. [[https://github.com/mooz/js2-mode/pull/523][PR#523]] will implement it.
+#+begin_src emacs-lisp
+(use-package js2-mode
+  :interpreter (
+    ("node" . js2-mode)
+  )
+  :init
+  (setq js-indent-level 2)
+  :hook (js-mode . js2-minor-mode)
+)
+#+end_src
+
+Smartparens always help:
+#+begin_src emacs-lisp
+(add-hook 'js-mode-hook #'smartparens-strict-mode)
+#+end_src
+
+**** Linting
+Prettier is a nice way to automatically format Javascript code. It has to be also installed and present in the =$PATH=.
+
+#+begin_src emacs-lisp
+(use-package prettier-js
+  :ensure-system-package (prettier . "npm install -g prettier")
+  :hook (js-mode . prettier-js-mode)
+)
+#+end_src
+**** ReactJS
+Emacs 27.1+ has a native support for =.jsx= files. I've compiled the HEAD version of Emacs to get this feature.
+
+#+begin_src emacs-lisp
+(use-package react-snippets)
+#+end_src
+**** Testing
+Jest is one of the most popular Javascript testing framework. It is widely used across frameworks. I mainly use it with React and for applications that are created with =create-react-app=, so it is safe to assume that =npm test= is configured correctly.
+#+begin_src emacs-lisp
+(use-package jest
+  :config
+  (setq jest-executable "npm test --")
+)
+(use-package flycheck-jest)
+#+end_src
 ** [[https://github.com/emacs-lsp/lsp-mode][Language Server Protocol support for Emacs]]
+=lsp-mode= requires server implementations to be installed on operating system level.
+
 #+BEGIN_SRC emacs-lisp
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
+  :ensure-system-package (
+    ; Javascript and TypeScript support
+    (tsserver . "npm install -g typescript")
+    (typescript-language-server . "npm install -g typescript-language-server")
+  )
   :init
   (setq
     lsp-enable-indentation nil
     lsp-use-native-json t
   )
   :hook (
-    (js-mode . lsp)
+    (js-mode . lsp-deferred)
   )
 )
 #+END_SRC
@@ -379,6 +488,8 @@ Projectile integration
 (use-package company-lsp)
 (use-package lsp-ui
   :commands lsp-ui-mode)
+(use-package helm-lsp
+  :commands helm-lsp-workspace-symbol)
 #+END_SRC
 
 Debug Adapter Protocol implementation for Emacs.
@@ -396,17 +507,6 @@ Treemacs integration allows to have an Eclipse style explorer view in a sidebar.
   :after lsp-mode
   :commands lsp-treemacs-errors-list)
 #+END_SRC
-** Language Support
-*** Java
-I prefer to format Java code according to the Google style guide:
-
-#+begin_src emacs-lisp
-(use-package google-c-style
-  :hook
-  (java-mode . google-set-c-style)
-  (java-mode . google-make-newline-indent)
-)
-#+end_src
 
 Eclipse Language Server extension configured to follow the Google style guide.
 
@@ -426,74 +526,6 @@ Eclipse Language Server extension configured to follow the Google style guide.
 Notes:
 - It is important to specify the profile for the format settings to make it work.
 - I do not need automatic building as I intend to use Bazel.
-
-Hook up the [[https://github.com/Fuco1/smartparens][smartparens]] to Java:
-
-#+BEGIN_SRC emacs-lisp
-(use-package smartparens
-  :hook
-  (java-mode . smartparens-mode))
-#+END_SRC
-
-Add a few useful Java snippets:
-#+begin_src emacs-lisp
-(use-package java-snippets)
-#+end_src
-**** Gradle
-Gradle uses Groovy syntax:
-#+begin_src emacs-lisp
-(use-package groovy-mode
-  :mode "\\.groovy\\'\\|\\.gradle\\'")
-#+end_src
-
-*** Javascript
-Javascript development requires [[https://nodejs.org/en/][node.js]] to be installed. Current LTS version is 10.
-
-#+begin_src sh
-brew install node@10
-#+end_src
-
-To use this version of node.js, it has to be added to the =PATH= environmental variable.
-#+begin_src emacs-lisp
-(setenv "PATH" (concat
-  "/usr/local/opt/node@10/bin:"
-  (getenv "PATH"))
-)
-#+end_src
-
-=lsp-mode= has Javascript and TypeScript support built-in, but it require an =npm= package to be installed:
-#+begin_src sh
-npm install -g typescript
-npm install -g typescript-language-server
-#+end_src
-
-=js2-mode= does not support syntax highlighting within the =render= blocks for HTML/XML currently. Emacs 27 will introduce support for this. [[https://github.com/mooz/js2-mode/pull/523][PR#523]] will implement it.
-#+begin_src emacs-lisp
-(use-package js2-mode
-  :interpreter (
-    ("node" . js2-mode)
-  )
-  :init
-  (setq js-indent-level 2)
-  :hook (js-mode . js2-minor-mode)
-)
-#+end_src
-
-Prettier is a nice way to automatically format Javascript code. It has to be also installed and present in the =$PATH=.
-
-#+begin_src emacs-lisp
-(use-package prettier-js
-  :ensure-system-package (prettier . "npm install -g prettier")
-  :hook (js-mode . prettier-js-mode)
-)
-#+end_src
-
-**** ReactJS
-Emacs 27.1+ has a native support for =.jsx= files. I've compiled the HEAD version of Emacs to get this feature.
-
-#+begin_src emacs-lisp
-(use-package react-snippets)
-#+end_src
 ** Remote File Editing
 As Emacs is not installed on remote machine as =vi= is usually. It is better to connect to remote host through Emacs and edit files transparently.
 *** TRAMP
