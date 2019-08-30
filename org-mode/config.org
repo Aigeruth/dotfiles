@@ -382,7 +382,7 @@ I prefer to format Java code according to the Google style guide:
 
 Smartparens always help:
 #+begin_src emacs-lisp
-(add-hook 'java-mode-hook #'smartparens-strict-mode)
+(add-hook 'java-mode-hook #'smartparens-mode)
 #+end_src
 
 Add a few useful Java snippets:
@@ -434,7 +434,7 @@ Homebrew installs versioned packages like =node= into a separate directory and i
 
 Smartparens always help:
 #+begin_src emacs-lisp
-(add-hook 'js-mode-hook #'smartparens-strict-mode)
+(add-hook 'js-mode-hook #'smartparens-mode)
 #+end_src
 
 **** Linting
