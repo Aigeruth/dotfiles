@@ -229,6 +229,12 @@ Ledger is a commandline account software. These packages make easier editing a =
 (use-package evil-ledger
   :after ledger-mode)
 #+end_src
+
+Activate Org Babel support:
+#+begin_src emacs-lisp
+(require 'ob-ledger)
+(add-to-list 'org-babel-load-languages '(ledger . t) t)
+#+end_src
 ** Markdown
 [[https://spec.commonmark.org/][Markdown]] is one of the most popular markup languages.
 #+begin_src emacs-lisp
