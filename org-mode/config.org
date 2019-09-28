@@ -397,22 +397,15 @@ Gradle uses Groovy syntax:
 #+end_src
 
 *** Javascript
-Javascript development requires [[https://nodejs.org/en/][node.js]] to be installed. Current LTS version is 10.
+Javascript development requires [[https://nodejs.org/en/][node.js]] to be installed.
 
 Homebrew installs versioned packages like =node= into a separate directory and it has to be added to the =$PATH= variable to be detected.
 
 =npm= installs project specific binaries into the =node_modules/.bin= directory. This directory has to be added to =$PATH= to be detected. =add-node-modules-path= package can take care of this.
 
 #+begin_src emacs-lisp
-(setenv "PATH" (concat
-  "/usr/local/opt/node@10/bin:"
-  (getenv "PATH"))
-)
-#+end_src
-
-#+begin_src emacs-lisp
 (use-package add-node-modules-path
-  :ensure-system-package ("/usr/local/opt/node@10/bin/node" . "brew install node@10")
+  :ensure-system-package node
   :hook (
     (js-mode . add-node-modules-path)
     (jest-mode . add-node-modules-path)
