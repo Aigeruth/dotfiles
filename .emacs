@@ -21,6 +21,9 @@
   (setq use-package-always-ensure t))
 
 (use-package use-package-ensure-system-package)
+(use-package quelpa-use-package
+  :init (setq quelpa-update-melpa-p nil)
+  :config (quelpa-use-package-activate-advice))
 (use-package auto-package-update
   :init
   (setq auto-package-update-prompt-before-update t)
