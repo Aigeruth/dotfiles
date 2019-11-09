@@ -97,17 +97,6 @@
   (text-mode . visual-line-mode)
   (org-mode . turn-on-flyspell)
 )
-(use-package org-journal
-  :after org
-  :config
-  (defun org-journal-find-location ()
-    ;; Open today's journal, but specify a non-nil prefix argument in order to
-    ;; inhibit inserting the heading; org-capture will insert the heading.
-    (org-journal-new-entry t)
-    ;; Position point on the journal's top-level heading so that org-capture
-    ;; will add the new entry as a child entry.
-    (goto-char (point-min)))
-)
 (org-babel-load-file "~/dotfiles/org-mode/config.org")
 (use-package alert
   :custom

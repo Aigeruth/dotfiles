@@ -132,6 +132,23 @@ Add support increasing and decreasing numbers:
 )
 #+end_src
 
+*** Journal
+#+begin_src emacs-lisp
+(use-package org-journal
+  :after org
+  :config
+  (defun org-journal-find-location ()
+    ;; Open today's journal, but specify a non-nil prefix argument in order to
+    ;; inhibit inserting the heading; org-capture will insert the heading.
+    (org-journal-new-entry t)
+    ;; Position point on the journal's top-level heading so that org-capture
+    ;; will add the new entry as a child entry.
+    (goto-char (point-min)))
+  :custom
+  (org-journal-file-type 'yearly)
+  (org-journal-encrypt-journal t)
+)
+#+end_src
 *** Capture
 Capture templates for Org mode. I use these templates for taking notes quickly, completing a checklist, or doing a specific exercise.
 
