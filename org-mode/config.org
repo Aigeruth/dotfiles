@@ -356,7 +356,7 @@ It is a library to help work with projects and navigate around files.
 =ripgrep= integration for faster searching:
 #+begin_src emacs-lisp
 (use-package rg
-  :ensure-system-package (rg . "brew install ripgrep")
+  :ensure-system-package (rg . ripgrep)
   :config
   (rg-enable-default-bindings)
 )
