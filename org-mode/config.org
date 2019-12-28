@@ -237,18 +237,12 @@ Ledger is a commandline account software. These packages make easier editing a =
 (use-package ledger-mode
   :pin melpa
   :mode "\\.ledger\\'"
-  :init
-  (setq
-    ledger-post-account-alignment-column 2
-    ledger-post-amount-alignment-column  64
-  )
+  :custom
+  (ledger-post-account-alignment-column 2)
+  (ledger-post-amount-alignment-column  64)
+  (ledger-accounts-file "~/Documents/ledger-cli/accounts")
   :config
   (setq ledger-default-date-format ledger-iso-date-format)
-  :hook
-  (ledger-mode . (lambda  ()
-    (setq-local tab-always-indent 'complete)
-    (setq-local completion-cycle-threshold t)
-    (setq-local ledger-complete-in-steps t)))
 )
 (use-package flycheck-ledger
   :pin melpa
