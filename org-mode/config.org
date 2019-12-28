@@ -106,6 +106,7 @@ Add support increasing and decreasing numbers:
 #+begin_src emacs-lisp
 (use-package flycheck
   :custom
+  (flycheck-javascript-eslint-executable "eslint_d")
   (flycheck-keymap-prefix (kbd "C-c C-f"))
   :init (global-flycheck-mode)
 )
@@ -463,12 +464,12 @@ Smartparens always help:
 #+end_src
 
 **** Linting
-Prettier is a nice way to automatically format Javascript code. It has to be also installed and present in the =$PATH=.
+Eslint can automatically format Javascript code by using Prettier. =eslintd= can make it faster by running it as a daemon. It has to be also installed and present in the =$PATH=.
 
 #+begin_src emacs-lisp
-(use-package prettier-js
-  :ensure-system-package (prettier . "npm install -g prettier")
-  :hook (js-mode . prettier-js-mode)
+(use-package eslintd-fix
+  :ensure-system-package (eslint_d . "npm install -g eslint_d")
+  :hook (js-mode . eslintd-fix-mode)
 )
 #+end_src
 **** ReactJS
