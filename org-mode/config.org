@@ -487,6 +487,13 @@ Jest is one of the most popular Javascript testing framework. It is widely used 
 )
 (use-package flycheck-jest)
 #+end_src
+*** TypeScript
+I use the =js-mode= for TypeScript as well because =lsp-mode= is backed by the TypeScript language server.
+
+#+begin_src emacs-lisp
+(add-to-list 'auto-mode-alist
+             '("\\.tsx\\'" . js-mode))
+#+end_src
 ** [[https://github.com/emacs-lsp/lsp-mode][Language Server Protocol support for Emacs]]
 =lsp-mode= requires server implementations to be installed on operating system level.
 
