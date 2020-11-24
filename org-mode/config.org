@@ -222,15 +222,6 @@ Add completion support to =company-mode=:
 #+end_src
 * File types
 This section adds support for various file types.
-** Bazel
-#+begin_src emacs-lisp
-(use-package bazel-mode
-  :quelpa (
-    (bazel-mode :fetcher github :repo "bazelbuild/emacs-bazel-mode")
-    :upgrade t
-  )
-)
-#+end_src
 ** Ledger
 Ledger is a commandline account software. These packages make easier editing a =.ledger= file by providing syntax highlight, tab-completion, etc.
 #+begin_src emacs-lisp
