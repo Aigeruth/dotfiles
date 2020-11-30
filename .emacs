@@ -79,7 +79,6 @@
   :config
   (require 'org-checklist)
   (require 'org-habit)
-  (add-to-list 'org-modules 'org-habit)
   (org-babel-do-load-languages
    'org-babel-load-languages
    '(
