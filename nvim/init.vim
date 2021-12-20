@@ -1,5 +1,5 @@
-filetype plugin indent on
-syntax on
+" filetype plugin indent on
+" syntax on
 match ErrorMsg '\s\+$'
 
 call plug#begin('~/.local/share/nvim/plugged')
@@ -9,30 +9,23 @@ Plug '/usr/local/opt/fzf' " installed via Homebrew
 Plug 'junegunn/fzf.vim'
 Plug 'jremmen/vim-ripgrep'
 
+" org mode
+Plug 'nvim-lua/plenary.nvim'
+Plug 'vhyrro/neorg'
+
 " extensions
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 
 " filetype plugins
-Plug 'ledger/vim-ledger'
 Plug 'aklt/plantuml-syntax'
 Plug 'w0rp/ale'  " langserver
-
-" Integrations
-Plug 'robertbasic/vim-hugo-helper'
-Plug 'tyru/open-browser.vim'
 
 " Colours
 Plug 'https://github.com/NLKNguyen/papercolor-theme'
 
-" OrgMode
-Plug 'jceb/vim-orgmode'
-Plug 'inkarkat/vim-SyntaxRange'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-repeat'
-Plug 'mattn/calendar-vim'
-Plug '~/.vim/taglist'
-Plug 'majutsushi/tagbar'
 
 call plug#end()
 
@@ -51,8 +44,8 @@ let g:ale_fixers = {
 """
 " File type configurations
 """
-autocmd FileType yaml setl indentkeys-=<:>
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+" autocmd FileType yaml setl indentkeys-=<:>
+" autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " Google style guide
-autocmd FileType java setlocal ts=2 sts=2 sw=2 expandtab
+" autocmd FileType java setlocal ts=2 sts=2 sw=2 expandtab
